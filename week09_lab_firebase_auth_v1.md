@@ -2,6 +2,22 @@
 
 **เครื่องมือ** Flutter, Firebase Console, FlutterFire CLI, Firebase Authentication, Cloud Firestore, Firebase Storage, google_sign_in
 
+## Checklist ภาพที่ต้องแนบ
+
+ภาพที่ใบงานกำหนดมีทั้งหมด **22 ภาพ** (บางภาพสามารถจัดรวมหลายหลักฐานให้อยู่ในภาพเดียวได้ถ้าอ่านข้อมูลชัดเจน):
+
+1. **Checkpoint 1.1 — 1 ภาพ:** Firebase Project Overview
+2. **Checkpoint 2.1 — 3 ภาพ:** Authentication Users หลังสมัครสำเร็จ, Error สมัคร Email ซ้ำ, Error รหัสผ่านสั้น
+3. **Checkpoint 3.1 — 2 ภาพ:** หน้าต่างเลือกบัญชี Google, Authentication Users ที่ Provider เป็น Google
+4. **Checkpoint 4.1 — 3 ภาพ:** หน้า Login ก่อนเข้า, MainScaffold หลังเข้า, Login หลังออกจากระบบ
+5. **Checkpoint 5.1 — 1 ภาพ:** Home ที่มีสินค้าทั้ง 🏪 API และ 🎓 Campus
+6. **Checkpoint 6.1 — 3 ภาพ:** Firestore มีอย่างน้อย 2 รายการ, field `sellerId` ตรงกับ UID, MyDraftsPage ที่ร่างหายไปแล้ว
+7. **Checkpoint 6.2 — 3 ภาพ:** ไฟล์ใน Storage, `imageUrl` ใน Firestore, รูปสินค้าบน Home
+8. **Checkpoint 7.1 — 2 ภาพ:** Rules Playground กรณีอนุญาตเจ้าของ และกรณีปฏิเสธผู้ใช้อื่น
+9. **Checkpoint 8.1 — 4 ภาพ:** เปิดแอปใหม่แล้วยัง Login, Offline Local Database, Offline โพสต์ล้มเหลวแบบไม่ Crash, Online แล้วโพสต์สำเร็จ
+
+> ภาพเดิมที่มีในโฟลเดอร์ครอบคลุม Checkpoint 1.1, 2.1 และบางส่วนของ 3.1 แล้ว ส่วนภาพที่เหลือต้องถ่ายหลังเชื่อม Firebase Project จริงและรันบน Emulator/เครื่องจริง
+
 ---
 
 ## วัตถุประสงค์การเรียนรู้
@@ -36,9 +52,7 @@
 
 > ✅ **Checkpoint 1.1** ถ่ายภาพหน้าจอ Firebase Console ที่แสดงหน้า Project Overview ของโปรเจกต์ที่สร้างเสร็จแล้ว
 
-```text
-บันทึกรูปผลลัพธ์ที่นี่
-```
+![alt text](image.png)
 
 ### ขั้นตอนที่ 1.2: 🔧 ทำตามขั้นตอน — ติดตั้งเครื่องมือและเชื่อมโปรเจกต์ด้วย FlutterFire CLI
 
@@ -159,9 +173,13 @@ Future<void> main() async {
 
 > ✅ **Checkpoint 2.1** ทดสอบสมัครสมาชิกด้วย Email ใหม่สำเร็จ ถ่ายภาพหน้าจอ Firebase Console เมนู Authentication → Users ที่แสดงบัญชีที่เพิ่งสมัคร จากนั้นทดสอบกรณีผิดพลาด 2 กรณี คือ (ก) สมัครซ้ำด้วย Email เดิม และ (ข) ใส่รหัสผ่านสั้นเกินไป ถ่ายภาพหน้าจอข้อความ Error ทั้งสองกรณี พร้อมอธิบายว่าโค้ดส่วนใดใน `auth_service.dart` เป็นตัวจัดการแต่ละกรณี
 
-```text
-บันทึกรูปผลลัพธ์ที่นี่ และคำอธิบายของแต่ละกรณี
-```
+![alt text](image-1.png)
+![alt text](image-3.png)
+![alt text](image-2.png)
+
+กรณีสมัครด้วย Email เดิม: Firebase ส่ง Error email-already-in-use กลับมา และ auth_service.dart แปลงเป็นข้อความ “อีเมลนี้ถูกสมัครสมาชิกแล้ว”
+
+กรณีรหัสผ่านสั้น: Firebase ส่ง Error weak-password กลับมา และแปลงเป็นข้อความ “กรุณาใช้รหัสผ่านอย่างน้อย 6 ตัวอักษร”
 
 ---
 
@@ -185,10 +203,16 @@ cd android && ./gradlew signingReport
 
 > ✅ **Checkpoint 3.1** ทดสอบกดปุ่มเข้าสู่ระบบด้วย Google ด้วยบัญชี Google จริงของคุณ ถ่ายภาพหน้าจอตอนเลือกบัญชี Google และภาพหน้าจอ Firebase Console ที่แสดงว่ามีผู้ใช้ใหม่ Provider เป็น Google เพิ่มเข้ามา อธิบายว่า `idToken` กับ `accessToken` ที่ได้จาก Google นำไปใช้ทำอะไรต่อในขั้นตอนการยืนยันตัวตนกับ Firebase (อ้างอิงหัวข้อ 9.4)
 
-```text
-บันทึกรูปผลลัพธ์ที่นี่ และคำอธิบาย
-```
 
+![Checkpoint 3.1-A หน้าต่างเลือกบัญชี Google](screenshots/checkpoint-3.1-a-google-account-picker.png)
+
+![Checkpoint 3.1-B Firebase Authentication แสดงผู้ใช้ Provider Google](screenshots/checkpoint-3.1-b-google-provider.png)
+
+
+**คำอธิบายการนำ `idToken` และ `accessToken` ไปใช้ยืนยันตัวตนกับ Firebase (หัวข้อ 9.4):**
+- **`idToken`:** ใช้เป็น **"หลักฐานยืนยันตัวตน"** ส่งให้ Firebase ตรวจสอบว่าผู้ใช้ผ่านการล็อกอินกับ Google จริง
+- **`accessToken`:** ใช้เป็น **"กุญแจขอสิทธิ์เข้าถึง"** ข้อมูลของ Google (เช่น Email และ Profile)
+- **การทำงานร่วมกับ Firebase:** แอปนำทั้งสองตัวมารวมเป็น Credential (`GoogleAuthProvider.credential`) แล้วส่งให้ `FirebaseAuth.signInWithCredential()` เพื่อให้ Firebase ล็อกอิน/สร้างผู้ใช้ในระบบ และออกสิทธิ์เข้าใช้งาน Cloud Firestore ต่อไป
 ---
 
 ## ส่วนที่ 4: AuthGate — สลับหน้าจอตามสถานะผู้ใช้
@@ -265,7 +289,11 @@ Widget build(BuildContext context) {
 > ✅ **Checkpoint 4.1** ถ่ายภาพหน้าจอ 3 ภาพเรียงกัน คือ (ก) แอปตอนเพิ่งเปิดขึ้นมาครั้งแรกแบบยังไม่ล็อกอิน แสดงหน้า Login (ข) หลังล็อกอินสำเร็จ แอปสลับไปแสดง `MainScaffold` อัตโนมัติโดยไม่ต้องกดอะไรเพิ่ม และ (ค) หลังกด "ออกจากระบบ" แอปสลับกลับไปหน้า Login เอง อธิบายว่าทำไมการใช้ `StreamBuilder` ฟัง `authStateChanges()` จึงทำให้ไม่ต้องเขียนโค้ดสั่ง Navigate ไปมาด้วยมือเลย
 
 ```text
-บันทึกรูปผลลัพธ์ที่นี่ (3 ภาพ) และคำอธิบาย
+![Checkpoint 4.1-A หน้า Login ก่อนเข้าสู่ระบบ](screenshots/checkpoint-4.1-a-login.png)
+![Checkpoint 4.1-B หน้า MainScaffold หลังเข้าสู่ระบบ](screenshots/checkpoint-4.1-b-main-scaffold.png)
+![Checkpoint 4.1-C หน้า Login หลังออกจากระบบ](screenshots/checkpoint-4.1-c-after-signout.png)
+
+`AuthGate` ฟัง `FirebaseAuth.instance.authStateChanges()` ผ่าน `StreamBuilder` เมื่อสถานะผู้ใช้เปลี่ยน Stream จะส่งค่าใหม่และ Widget จะ rebuild เพื่อเลือกแสดง `LoginPage` หรือ `MainScaffold` โดยอัตโนมัติ จึงไม่ต้องเขียน `Navigator.push()` หรือ `pop()` เพื่อสลับหน้าด้วยมือ และยังรองรับสถานะ Login ที่ Firebase จำไว้เมื่อเปิดแอปใหม่ด้วย
 ```
 
 ---
@@ -280,7 +308,9 @@ Widget build(BuildContext context) {
 2. ถ้าในอนาคตอาจารย์สั่งให้เปลี่ยนจาก Fake Store API ไปใช้ API อื่น ต้องแก้ไฟล์กี่ไฟล์ ถ้าทุก Widget เรียกผ่าน Interface `ItemRepository` เท่านั้น?
 
 ```text
-บันทึกคำตอบของคุณที่นี่
+1. การเพิ่ม `ItemRepositoryFirestore` เป็น Implementation ใหม่ช่วยรักษา Interface เดิมและแยกหน้าที่ของแต่ละแหล่งข้อมูล `HomePage` จึงไม่ผูกกับ Firebase SDK หรือ HTTP โดยตรง สามารถใช้ Fake/Mock Repository ตอนทดสอบ และเพิ่มหรือถอดแหล่งข้อมูลได้โดยไม่แก้ UI
+
+2. หากเปลี่ยนจาก Fake Store API เป็น API ใหม่ ให้สร้างหรือแก้ Implementation ของ Repository เพียง 1 ไฟล์ และเปลี่ยนจุดประกอบ Dependency ใน `main.dart` 1 จุด ส่วน Widget ที่เรียกผ่าน `ItemRepository` ไม่ต้องแก้ไข
 ```
 
 ### ขั้นตอนที่ 5.2: **นักศึกษาเขียน Code เอง** — ItemRepositoryFirestore
@@ -351,7 +381,9 @@ final pages = [
 > ✅ **Checkpoint 5.1** ถ่ายภาพหน้าจอ Home ที่แสดงสินค้าจากทั้งสองแหล่งข้อมูลปนกันอยู่ในลิสต์เดียว พร้อม Badge ที่แยกแหล่งที่มาชัดเจน (ถ้ายังไม่เคยมีประกาศจริงใน Firestore เลย ให้ทำส่วนที่ 6 ให้เสร็จก่อนแล้วย้อนกลับมาถ่ายภาพ Checkpoint นี้) อธิบายว่าการออกแบบให้ `HomePage` ไม่รู้จัก `ItemRepositoryApi`/`ItemRepositoryFirestore` โดยตรง แต่รู้จักผ่าน Interface `ItemRepository` เท่านั้น ช่วยให้ทดสอบหรือเปลี่ยนแหล่งข้อมูลในอนาคตง่ายขึ้นอย่างไร
 
 ```text
-บันทึกรูปผลลัพธ์ที่นี่ และคำอธิบาย
+![Checkpoint 5.1 หน้า Home แสดงทั้ง Badge API และ Campus](screenshots/checkpoint-5.1-and-6.2-c-home-campus.png)
+
+การให้ `HomePage` รู้จักเฉพาะ Interface `ItemRepository` ทำให้ UI รับเพียง `List<Item>` และไม่ต้องรู้ว่าข้อมูลมาจาก HTTP หรือ Firestore จึงสลับแหล่งข้อมูล เขียน Mock และทดสอบแต่ละส่วนได้ง่ายขึ้น
 ```
 
 ---
@@ -401,13 +433,20 @@ final pages = [
 > ✅ **Checkpoint 6.1** โพสต์ขายจริงอย่างน้อย 2 รายการผ่านแอป ถ่ายภาพหน้าจอ Firebase Console เมนู Firestore Database ที่แสดง Collection `items` มีเอกสารที่โพสต์เข้ามาจริง พร้อม field `sellerId` ที่ตรงกับ `uid` ของบัญชีที่ใช้ทดสอบ และยืนยันว่าร่างทั้งสองรายการหายไปจาก `MyDraftsPage` แล้ว
 
 ```text
-บันทึกรูปผลลัพธ์ที่นี่
+![Checkpoint 6.1-A & 6.1-B Firestore Collection items มี 2 รายการ และแสดง field sellerId ตรงกับ UID](screenshots/checkpoint-6.1-a-firestore-items.png)
+![Checkpoint 6.1-C หน้า MyDraftsPage หลังโพสต์ ร่างทั้งสองหายไปแล้ว](screenshots/checkpoint-6.1-c-my-drafts-empty.png)
+
+ลำดับการทำงานคือถามราคา → อัปโหลดรูปและรอ Download URL → สร้าง `Item` พร้อม `sellerId` → เขียนลง Firestore → ลบร่างออกจาก Drift การลบร่างหลังโพสต์สำเร็จช่วยป้องกันการโพสต์รายการเดิมซ้ำ
 ```
 
 > ✅ **Checkpoint 6.2** ถ่ายภาพหน้าจอ Firebase Console เมนู Storage ที่แสดงไฟล์รูปภาพที่อัปโหลดสำเร็จ และภาพหน้าจอ Firestore ที่แสดงว่าเอกสารมี field `imageUrl` เป็น URL จริงที่เปิดดูได้ ถ่ายภาพหน้าจอแอปที่แสดงรูปสินค้านั้นบนหน้า Home ผ่าน `Image.network(imageUrl)` ด้วย (ย้อนกลับไปถ่ายภาพ Checkpoint 5.1 ให้ครบตอนนี้ ถ้ายังไม่ได้ทำ)
 
 ```text
-บันทึกรูปผลลัพธ์ที่นี่
+![Checkpoint 6.2-A Firebase แจ้งว่าต้องใช้ Blaze Plan เพื่อเปิด Storage](screenshots/checkpoint-6.2-a-storage-blaze-required.png)
+
+> **ข้อจำกัดของ Firebase Project ใหม่:** ตั้งแต่วันที่ 3 กุมภาพันธ์ 2026 Firebase กำหนดให้ Cloud Storage ใช้งานได้เฉพาะโครงการที่เชื่อม Cloud Billing และอยู่ใน Blaze Plan แม้ปริมาณใช้งานบางส่วนยังอยู่ในโควตาฟรีก็ตาม โปรเจกต์นี้ใช้ Spark Plan จึงไม่สามารถสร้าง Storage Bucket โดยไม่ผูกบัญชีชำระเงิน ในการทดสอบ Firestore และหน้า Home จึงใช้ URL รูปสาธารณะสำรองแทน โดยยังคงโค้ดอัปโหลด Storage ไว้ครบและจะทำงานทันทีเมื่อเปิด Blaze Plan
+![Checkpoint 6.2-B เอกสาร Firestore มี field imageUrl แสดง URL ของภาพ](screenshots/checkpoint-6.1-a-firestore-items.png)
+![Checkpoint 6.2-C หน้า Home แสดงรูปสินค้าจาก Image.network](screenshots/checkpoint-5.1-and-6.2-c-home-campus.png)
 ```
 
 ---
@@ -440,7 +479,10 @@ service cloud.firestore {
 > ✅ **Checkpoint 7.1 (Self-Study)** ถ่ายภาพหน้าจอผลการทดลองทั้ง 2 กรณีใน Rules Playground เขียนอธิบายสั้น ๆ ว่าทำไม Client-side Validation (การไม่แสดงปุ่มแก้ไขให้เห็น) เพียงอย่างเดียวจึงไม่เพียงพอต่อความปลอดภัยของข้อมูลจริง
 
 ```text
-บันทึกรูปผลลัพธ์ที่นี่ และคำอธิบาย
+![Checkpoint 7.1-A Rules Playground กรณีเจ้าของแก้เอกสารของตัวเองได้ (Allowed)](screenshots/checkpoint-7.1-a-rules-allow.png)
+![Checkpoint 7.1-B Rules Playground กรณีแก้เอกสารของผู้อื่นแล้วถูกปฏิเสธ (Denied)](screenshots/checkpoint-7.1-b-rules-deny.png)
+
+Client-side Validation หรือการซ่อนปุ่มไม่เพียงพอ เพราะผู้โจมตีสามารถแก้ไข Client หรือเรียก Firebase API โดยตรงได้ Security Rules ทำงานบน Server และตรวจ `request.auth.uid` เทียบกับ `sellerId` ทุกคำขอ จึงเป็นมาตรการที่บังคับใช้จริงแม้คำขอไม่ได้มาจาก UI ของแอป
 ```
 
 ---
@@ -459,7 +501,12 @@ service cloud.firestore {
 > ✅ **Checkpoint 8.1** ถ่ายภาพหน้าจอผลการทดสอบทั้ง 4 ข้อ อธิบายว่าทำไมฟีเจอร์ที่พึ่งพา Local Database (Favorites, ร่างประกาศ) กับฟีเจอร์ที่พึ่งพา Firebase (โพสต์ขายจริง, ดูสินค้าจาก Firestore) จึงมีพฤติกรรมตอนออฟไลน์ต่างกัน
 
 ```text
-บันทึกรูปผลลัพธ์ที่นี่ และคำอธิบาย
+![Checkpoint 8.1-A ปิดและเปิดแอปใหม่แล้วยังอยู่ใน MainScaffold](screenshots/checkpoint-8.1-a-auth-session-persisted.png)
+![Checkpoint 8.1-B ปิดเครือข่ายแล้วยังเปิด Favorites จากฐานข้อมูลในเครื่องได้](screenshots/checkpoint-8.1-b-offline-favorites-local.png)
+![Checkpoint 8.1-C ปิดเครือข่ายแล้วโพสต์ไม่สำเร็จ แอปแสดงข้อความ Error และไม่ Crash](screenshots/checkpoint-8.1-c-offline-post-error.png)
+![Checkpoint 8.1-D เปิดเครือข่ายแล้วโพสต์รายการเดิมสำเร็จ](screenshots/checkpoint-8.1-d-online-post-success.png)
+
+Firebase Auth เก็บ Session ไว้ในเครื่องจึงไม่ต้อง Login ใหม่เมื่อเปิดแอป ส่วน Favorites และ Drafts อ่านจากฐานข้อมูล SQLite ผ่าน Drift จึงใช้งานได้โดยไม่ต้องมีเครือข่าย การโพสต์จริงต้องส่งไฟล์ไป Firebase Storage และส่งเอกสารไป Cloud Firestore จึงล้มเหลวเมื่อ Offline แอปจะจับ Error แสดงข้อความ และเก็บร่างไว้ให้ลองใหม่หลังกลับมา Online
 ```
 
 ---
