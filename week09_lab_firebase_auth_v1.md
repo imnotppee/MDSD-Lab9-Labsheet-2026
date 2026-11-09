@@ -2,22 +2,6 @@
 
 **เครื่องมือ** Flutter, Firebase Console, FlutterFire CLI, Firebase Authentication, Cloud Firestore, Firebase Storage, google_sign_in
 
-## Checklist ภาพที่ต้องแนบ
-
-ภาพที่ใบงานกำหนดมีทั้งหมด **22 ภาพ** (บางภาพสามารถจัดรวมหลายหลักฐานให้อยู่ในภาพเดียวได้ถ้าอ่านข้อมูลชัดเจน):
-
-1. **Checkpoint 1.1 — 1 ภาพ:** Firebase Project Overview
-2. **Checkpoint 2.1 — 3 ภาพ:** Authentication Users หลังสมัครสำเร็จ, Error สมัคร Email ซ้ำ, Error รหัสผ่านสั้น
-3. **Checkpoint 3.1 — 2 ภาพ:** หน้าต่างเลือกบัญชี Google, Authentication Users ที่ Provider เป็น Google
-4. **Checkpoint 4.1 — 3 ภาพ:** หน้า Login ก่อนเข้า, MainScaffold หลังเข้า, Login หลังออกจากระบบ
-5. **Checkpoint 5.1 — 1 ภาพ:** Home ที่มีสินค้าทั้ง 🏪 API และ 🎓 Campus
-6. **Checkpoint 6.1 — 3 ภาพ:** Firestore มีอย่างน้อย 2 รายการ, field `sellerId` ตรงกับ UID, MyDraftsPage ที่ร่างหายไปแล้ว
-7. **Checkpoint 6.2 — 3 ภาพ:** ไฟล์ใน Storage, `imageUrl` ใน Firestore, รูปสินค้าบน Home
-8. **Checkpoint 7.1 — 2 ภาพ:** Rules Playground กรณีอนุญาตเจ้าของ และกรณีปฏิเสธผู้ใช้อื่น
-9. **Checkpoint 8.1 — 4 ภาพ:** เปิดแอปใหม่แล้วยัง Login, Offline Local Database, Offline โพสต์ล้มเหลวแบบไม่ Crash, Online แล้วโพสต์สำเร็จ
-
-> ภาพเดิมที่มีในโฟลเดอร์ครอบคลุม Checkpoint 1.1, 2.1 และบางส่วนของ 3.1 แล้ว ส่วนภาพที่เหลือต้องถ่ายหลังเชื่อม Firebase Project จริงและรันบน Emulator/เครื่องจริง
-
 ---
 
 ## วัตถุประสงค์การเรียนรู้
