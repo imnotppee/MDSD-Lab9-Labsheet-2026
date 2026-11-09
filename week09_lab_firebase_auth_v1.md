@@ -288,13 +288,13 @@ Widget build(BuildContext context) {
 
 > ✅ **Checkpoint 4.1** ถ่ายภาพหน้าจอ 3 ภาพเรียงกัน คือ (ก) แอปตอนเพิ่งเปิดขึ้นมาครั้งแรกแบบยังไม่ล็อกอิน แสดงหน้า Login (ข) หลังล็อกอินสำเร็จ แอปสลับไปแสดง `MainScaffold` อัตโนมัติโดยไม่ต้องกดอะไรเพิ่ม และ (ค) หลังกด "ออกจากระบบ" แอปสลับกลับไปหน้า Login เอง อธิบายว่าทำไมการใช้ `StreamBuilder` ฟัง `authStateChanges()` จึงทำให้ไม่ต้องเขียนโค้ดสั่ง Navigate ไปมาด้วยมือเลย
 
-```text
+
 ![Checkpoint 4.1-1](screenshots/checkpoint-4.1-1.png)
 ![Checkpoint 4.1-2](screenshots/checkpoint-4.1-2.png)
 ![Checkpoint 4.1-3](screenshots/checkpoint-4.1-3.png)
 
 `AuthGate` ฟัง `FirebaseAuth.instance.authStateChanges()` ผ่าน `StreamBuilder` เมื่อสถานะผู้ใช้เปลี่ยน Stream จะส่งค่าใหม่และ Widget จะ rebuild เพื่อเลือกแสดง `LoginPage` หรือ `MainScaffold` โดยอัตโนมัติ จึงไม่ต้องเขียน `Navigator.push()` หรือ `pop()` เพื่อสลับหน้าด้วยมือ และยังรองรับสถานะ Login ที่ Firebase จำไว้เมื่อเปิดแอปใหม่ด้วย
-```
+
 
 ---
 
@@ -380,11 +380,11 @@ final pages = [
 
 > ✅ **Checkpoint 5.1** ถ่ายภาพหน้าจอ Home ที่แสดงสินค้าจากทั้งสองแหล่งข้อมูลปนกันอยู่ในลิสต์เดียว พร้อม Badge ที่แยกแหล่งที่มาชัดเจน (ถ้ายังไม่เคยมีประกาศจริงใน Firestore เลย ให้ทำส่วนที่ 6 ให้เสร็จก่อนแล้วย้อนกลับมาถ่ายภาพ Checkpoint นี้) อธิบายว่าการออกแบบให้ `HomePage` ไม่รู้จัก `ItemRepositoryApi`/`ItemRepositoryFirestore` โดยตรง แต่รู้จักผ่าน Interface `ItemRepository` เท่านั้น ช่วยให้ทดสอบหรือเปลี่ยนแหล่งข้อมูลในอนาคตง่ายขึ้นอย่างไร
 
-```text
+
 ![Checkpoint 5.1-1](screenshots/checkpoint-5.1-1.png)
 
 การให้ `HomePage` รู้จักเฉพาะ Interface `ItemRepository` ทำให้ UI รับเพียง `List<Item>` และไม่ต้องรู้ว่าข้อมูลมาจาก HTTP หรือ Firestore จึงสลับแหล่งข้อมูล เขียน Mock และทดสอบแต่ละส่วนได้ง่ายขึ้น
-```
+
 
 ---
 
@@ -432,7 +432,7 @@ final pages = [
 
 > ✅ **Checkpoint 6.1** โพสต์ขายจริงอย่างน้อย 2 รายการผ่านแอป ถ่ายภาพหน้าจอ Firebase Console เมนู Firestore Database ที่แสดง Collection `items` มีเอกสารที่โพสต์เข้ามาจริง พร้อม field `sellerId` ที่ตรงกับ `uid` ของบัญชีที่ใช้ทดสอบ และยืนยันว่าร่างทั้งสองรายการหายไปจาก `MyDraftsPage` แล้ว
 
-```text
+
 ![Checkpoint 6.1-1](screenshots/checkpoint-6.1-1.png)
 ![Checkpoint 6.1-2](screenshots/checkpoint-6.1-2.png)
 ![Checkpoint 6.1-3](screenshots/checkpoint-6.1-3.png)
